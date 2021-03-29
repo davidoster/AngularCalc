@@ -10,23 +10,38 @@ export class CalculatorService {
   private _display: string = "0"
 
 
-  constructor() { }
+  constructor() { 
+    this.clear()
+  }
 
   setNumber(value: number) {
-    if(this._symbol !== "" && this._display == "0") {
+    console.log(this._firstNumber, this._secondNumber, this._symbol)
+    if(this._symbol != "" && this._display == "0") {
+      console.log('A')
       this.evalDisplay(value, 0)
       this.secondNumber = value
     }
-    else if(this._symbol == "" && this._display == "0") {
+    else if(this._symbol != "" && this._display != "0" && this.secondNumber == 0) {
+      console.log('B')
+      this.evalDisplay(value, 0)
+      this.secondNumber = this.display
+    } 
+    else if(this._symbol != "" && this._display != "0" && this.secondNumber != 0) {
+      console.log('B2')
       this.evalDisplay(value, 1)
       this.secondNumber = this.display
-    } else if(this._symbol !== "" && this._display != "0") {
+    }
+    else if(this._symbol == "" && this._display != "0") {
+      console.log('C')
       this.evalDisplay(value, 1)  
       this.firstNumber = this.display
-    } else {
+    } 
+    else if(this._symbol == "" && this._display == "0") {
+      console.log('D')
       this.evalDisplay(value, 0)
       this.firstNumber = value
     }
+    console.log(this._firstNumber, this._secondNumber, this._symbol)
   }
 
   calculate() {
@@ -45,6 +60,9 @@ export class CalculatorService {
         this.evalDisplay((this.firstNumber / this.secondNumber),0)
         break
     }
+    this.firstNumber = this.display
+    this._secondNumber = 0
+    this.symbol = ""
   }
 
   clear() {
@@ -78,6 +96,7 @@ export class CalculatorService {
 
   set symbol(value) {
     this._symbol = value
+    console.log(this._symbol)
   }
 
   // number = 0, _display =  value
