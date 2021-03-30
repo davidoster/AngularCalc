@@ -8,8 +8,8 @@ import { CalculatorService } from '../services/calculator.service';
   providers: [ CalculatorService ]
 })
 export class CalcKeyComponent implements OnInit {
-  @Input() number: number = -1
-  @Input() calcsrv: CalculatorService
+  @Input("number") number: number = -1
+  @Input("calcsrv") calcsrv: CalculatorService
 
   calcService: CalculatorService
 
