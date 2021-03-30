@@ -19,8 +19,9 @@
         <div class="grid-item numbers" (click)="getNumber(6)">6</div>
         <div class="grid-item calculations" (click)="getSymbol('-')">-</div>
 
-        <div class="grid-item numbers" (click)="getNumber(1)">1</div>
-        <!-- <calculator-calckey [number] = 1></calculator-calckey> -->
+        <!-- <div class="grid-item numbers" (click)="getNumber(1)">1</div> -->
+        <app-calc-key [number]=1 [calcsrv]=getCalculationService()></app-calc-key>
+        <!-- <calckey (click)="getNumber(1)">1</calckey> -->
         <div class="grid-item numbers" (click)="getNumber(2)">2</div>
         <div class="grid-item numbers" (click)="getNumber(3)">3</div>
         <div class="grid-item calculations" (click)="getSymbol('+')">+</div>
